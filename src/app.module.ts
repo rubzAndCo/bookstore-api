@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { BookModule } from './book/book.module';
 import { Book } from './Entity/Book';
 import { Author } from './Entity/Author';
+import { AuthorModule } from './author/author.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { Author } from './Entity/Author';
       database: './db/books.sqlite',
       entities: [Book, Author]
     }),
-    BookModule
+    BookModule,
+    AuthorModule
   ],
   controllers: [AppController],
   providers: [AppService],

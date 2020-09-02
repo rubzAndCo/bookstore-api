@@ -4,11 +4,9 @@ import {
   Delete,
   Get,
   HttpCode,
-  HttpException,
   HttpStatus,
   Param,
   Post,
-  Res,
   UseFilters,
 } from '@nestjs/common';
 import { Book } from 'src/Entity/Book';
@@ -18,7 +16,6 @@ import { DeleteResult } from 'typeorm/index';
 import { GetBookDto } from './DTO/get-book.dto';
 import { BookDto } from '../Types/BookDto';
 import { HttpExceptionFilter } from '../Error/http-exception.filter';
-import { AllExceptionsFilter } from '../Error/exception.filter';
 import { QueryExceptionFilter } from '../Error/query-exception.filter';
 
 @Controller('book')
@@ -41,7 +38,7 @@ export class BookController {
   }
 
   @Post()
-  async createBook(@Body() createBookDto: CreateBookDto) {
+  async createBook(@Body() createBookDto: CreateBookDto): Promise<Book> {
     return await this.bookService.create(createBookDto)
   }
 
