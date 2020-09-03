@@ -14,7 +14,7 @@ import { AuthorModule } from './author/author.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       synchronize: true,
-      database: './db/books.sqlite',
+      database: process.env.NODE_ENV === 'test' ? './db/test_e2e.sqlite' : './db/books.sqlite',
       entities: [Book, Author]
     }),
     BookModule,
