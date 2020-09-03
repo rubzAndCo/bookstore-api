@@ -7,6 +7,7 @@ export class Book {
   @PrimaryGeneratedColumn('uuid')
   book_id: string;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @ManyToMany(type => Author, author => author.books)
   @JoinTable()
   authors: Author[];

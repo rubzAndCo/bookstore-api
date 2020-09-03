@@ -51,22 +51,22 @@ describe('AuthorController', () => {
 
   it('Should call the find service with right parameters', async () => {
     const author: Author = { first_name: 'John', last_name: 'Doe'}
-    const id = 'randomId'
+    const params = {id: 'randomId'}
     const serviceMock = jest.spyOn(service, 'findOne').mockResolvedValueOnce(author)
 
-    await controller.getOneAuthor(id)
+    await controller.getOneAuthor(params)
 
-    expect(serviceMock).toBeCalledWith(id)
+    expect(serviceMock).toBeCalledWith(params.id)
     expect(serviceMock).toBeCalledTimes(1)
   })
 
   it('Should call the delete service with right parameters', async () => {
-    const id = 'randomId'
+    const params = {id: 'randomId'}
     const serviceMock = jest.spyOn(service, 'remove').mockResolvedValueOnce({raw: null})
 
-    await controller.deleteAuthor(id)
+    await controller.deleteAuthor(params)
 
-    expect(serviceMock).toBeCalledWith(id)
+    expect(serviceMock).toBeCalledWith(params.id)
     expect(serviceMock).toBeCalledTimes(1)
   })
 });

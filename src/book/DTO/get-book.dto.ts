@@ -1,11 +1,9 @@
-import { Author } from '../../Entity/Author';
 import { Book } from '../../Entity/Book';
 import { Injectable } from '@nestjs/common';
 import { BookDto } from '../../Types/BookDto';
 import { BookAuthor, RawBookAuthor } from '../../Types/BookAuthor';
-import { BookDetails, RawBookDetails } from '../../Types/BookDetails';
+import { BookDetails } from '../../Types/BookDetails';
 import { BookCovers, RawBookCovers } from '../../Types/BookCovers';
-import { raw } from 'express';
 
 
 @Injectable()

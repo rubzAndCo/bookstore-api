@@ -20,6 +20,10 @@ export class AuthorService {
     return this.authorRepository.findOne(authorId)
   }
 
+  findOneWithBooks(authorId: string): Promise<Author> {
+    return this.authorRepository.findOne(authorId, { relations: ['books'] })
+  }
+
   async remove(authorId: string): Promise<DeleteResult> {
     return this.authorRepository.delete(authorId);
   }

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { AuthorService } from './author.service';
 import { Author } from '../Entity/Author';
 import { DeleteResult } from 'typeorm/index';
@@ -14,9 +14,14 @@ export class AuthorController {
     return this.authorService.findAll()
   }
 
-  @Get()
-  async getOneAuthor(authorId: string): Promise<Author> {
-    return this.authorService.findOne(authorId)
+  @Get(':id')
+  async getOneAuthor(@Param() params: {id: string}): Promise<Author> {
+    return this.authorService.findOne(params.id)
+  }
+
+  @Get(':id/books')
+  async getOneAuthorWithBooks(@Param() params: {id: string}): Promise<Author> {
+    return this.authorService.findOneWithBooks(params.id)
   }
 
   @Post()
@@ -24,9 +29,9 @@ export class AuthorController {
     return this.authorService.create(createAuthorDto)
   }
 
-  @Delete()
-  async deleteAuthor(authorId: string): Promise<DeleteResult> {
-    return this.authorService.remove(authorId)
+  @Delete(':id')
+  async deleteAuthor(@Param() params: {id: string}): Promise<DeleteResult> {
+    return this.authorService.remove(params.id)
   }
 
   /*@Put()

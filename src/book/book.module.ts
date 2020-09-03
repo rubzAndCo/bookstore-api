@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { BookService } from './book.service';
 import { BookController } from './book.controller';
-import { getRepositoryToken, TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { Book } from '../Entity/Book';
 import { GetBookDto } from './DTO/get-book.dto';
 
