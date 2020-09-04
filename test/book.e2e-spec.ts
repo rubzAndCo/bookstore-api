@@ -3,8 +3,9 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 
-describe('AppController (e2e)', () => {
+describe('BookController (e2e)', () => {
   let app: INestApplication;
+  const route = 'book'
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -19,7 +20,7 @@ describe('AppController (e2e)', () => {
 
   it('/author (GET)', () => {
     return request(app.getHttpServer())
-      .get('/author')
+      .get(`/${route}`)
       .expect(200)
       .expect([]);
   });

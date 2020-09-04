@@ -15,7 +15,8 @@ import { AuthorModule } from './author/author.module';
       type: 'sqlite',
       synchronize: true,
       database: process.env.NODE_ENV === 'test' ? './db/test_e2e.sqlite' : './db/books.sqlite',
-      entities: [Book, Author]
+      entities: [Book, Author],
+      keepConnectionAlive: true
     }),
     BookModule,
     AuthorModule
